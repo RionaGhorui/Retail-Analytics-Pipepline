@@ -2,7 +2,6 @@ FROM apache/airflow:2.8.0
 
 USER root
 
-# Java for Spark and R packages
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         default-jdk \
@@ -21,12 +20,11 @@ RUN apt-get update && \
 
 ENV JAVA_HOME=/usr/lib/jvm/default-java
 
+RUN Rscript -e "install.packages(c('arrow', 'dplyr', 'ggplot2', 'survival', 'survminer', 'pROC'), repos='https://cran.rstudio.com/', quiet=TRUE)"
+
 USER airflow
 
 # Python packages
 RUN pip install --no-cache-dir \
     pyspark==3.4.0 \
     delta-spark==2.4.0
-
-# R packages
-RUN Rscript -e "install.packages(c('arrow', 'dplyr', 'ggplot2', 'survival', 'survminer', 'pROC'), repos='https://cran.rstudio.com/', quiet=TRUE)"
