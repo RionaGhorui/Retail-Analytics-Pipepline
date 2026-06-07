@@ -33,9 +33,6 @@ df = spark.read.format("delta").load(f"{SILVER}/orders_master")
 # Last date in the Olist dataset — used as "today" for recency calculation
 SNAPSHOT = "2018-10-17"
 
-# Aggregate to one row per actual unique customer (customer_unique_id).
-# RFM: Recency (days since last purchase), Frequency (order count),
-#      Monetary (total spend) — the standard churn feature set.
 rfm = df.groupBy("customer_unique_id").agg(
     datediff(
         lit(SNAPSHOT).cast("date"),
@@ -48,26 +45,25 @@ rfm = df.groupBy("customer_unique_id").agg(
     avg("delivery_days").alias("avg_delivery_days"),
 )
 
-# Churn label: single-purchase customer who has not returned in 6 months.
-# This is a business definition — document it and own it in interviews.
 gold_df = rfm.withColumn(
     "is_churned",
     when((col("frequency") == 1) & (col("recency_days") > 180), 1)
     .otherwise(0),
 )
 
-# Write Delta Lake table (canonical, ACID-compliant storage)
+
 gold_df.write.format("delta") \
     .mode("overwrite") \
     .save(f"{GOLD}/customer_features")
 
-# Write plain Parquet alongside Delta for R to consume via the arrow package.
-# R reads the Parquet files directly — no JVM or Spark session required in R.
+
 gold_df.write.format("parquet") \
     .mode("overwrite") \
     .save(f"{GOLD}/customer_features_parquet")
 
 print(f"[gold] customer_features: {gold_df.count()} rows")
 gold_df.groupBy("is_churned").count().show()
+
+gold_df.toPandas().to_csv(f"{GOLD}/customer_features.csv", index=False)
 
 spark.stop()

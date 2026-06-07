@@ -20,7 +20,7 @@ RUN apt-get update && \
 
 ENV JAVA_HOME=/usr/lib/jvm/default-java
 
-RUN Rscript -e "install.packages(c('arrow', 'dplyr', 'ggplot2', 'survival', 'survminer', 'pROC'), repos='https://cran.rstudio.com/', quiet=TRUE)"
+RUN Rscript -e "install.packages(c('ggplot2', 'survival', 'dplyr'), repos='https://cran.rstudio.com/', quiet=TRUE)"
 
 USER airflow
 
