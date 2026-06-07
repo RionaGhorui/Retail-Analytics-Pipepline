@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  pipeline:
+    build: .
+    container_name: retail-pipeline
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./spark_jobs:/opt/spark_jobs
+      - ./delta_lake:/opt/delta_lake
+      - ./data:/opt/data
+      - ./r_scripts:/opt/r_scripts
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - JAVA_HOME=/usr/lib/jvm/default-java
+    mem_limit: 4g
+    command: >
+      bash -c "
+        airflow db init &&
+        airflow users create
+          --username admin --password admin
+          --firstname Admin --lastname User
+          --role Admin --email admin@example.com &&
+        airflow webserver & airflow scheduler
+      "

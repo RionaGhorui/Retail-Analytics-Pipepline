@@ -1,0 +1,39 @@
+# ── Kaggle dataset ────────────────────────────────────────────────────────────
+# Download separately from Kaggle and place in data/raw/
+data/raw/*.csv
+
+# ── Delta Lake + Parquet generated data ──────────────────────────────────────
+# Always reproduced by running the pipeline — no point versioning them
+delta_lake/bronze/
+delta_lake/silver/
+delta_lake/gold/customer_features/
+delta_lake/gold/customer_features_parquet/
+
+# Keep pipeline output artifacts (proof of successful run)
+!delta_lake/gold/survival_curve.png
+!delta_lake/gold/rfm_distribution.png
+!delta_lake/gold/model_summary.txt
+
+# ── Airflow runtime files ─────────────────────────────────────────────────────
+logs/
+airflow.db
+airflow.cfg
+airflow-webserver.pid
+standalone_admin_password.txt
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# ── R ─────────────────────────────────────────────────────────────────────────
+.Rhistory
+.RData
+Rplots.pdf
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
