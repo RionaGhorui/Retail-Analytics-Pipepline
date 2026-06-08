@@ -11,17 +11,15 @@ services:
       - ./data:/opt/data
       - ./r_scripts:/opt/r_scripts
     environment:
-      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - JAVA_HOME=/usr/lib/jvm/default-java
     mem_limit: 4g
     command: >
       bash -c "
-        airflow db init &&
-        airflow users create
-          --username admin --password admin
-          --firstname Admin --lastname User
-          --role Admin --email admin@example.com &&
+        airflow db migrate &&
+        airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com &&
         airflow webserver & airflow scheduler
       "
+      
