@@ -1,0 +1,35 @@
+=== Logistic Regression — Churn Model ===
+
+
+Call:
+glm(formula = is_churned ~ recency_days + frequency + monetary_total + 
+    avg_order_value + avg_review_score + avg_delivery_days, family = binomial(link = "logit"), 
+    data = train)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+ -8.49    0.00    0.00    0.00    0.00  
+
+Coefficients:
+                    Estimate Std. Error    z value Pr(>|z|)    
+(Intercept)        3.594e+15  2.097e+06  1.714e+09   <2e-16 ***
+recency_days       1.711e+13  1.620e+03  1.056e+10   <2e-16 ***
+frequency         -6.691e+15  1.730e+06 -3.866e+09   <2e-16 ***
+monetary_total     1.087e+12  8.985e+03  1.210e+08   <2e-16 ***
+avg_order_value   -1.090e+12  9.159e+03 -1.190e+08   <2e-16 ***
+avg_review_score   1.766e+12  2.034e+05  8.681e+06   <2e-16 ***
+avg_delivery_days  8.175e+11  2.742e+04  2.981e+07   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 92928.6  on 74684  degrees of freedom
+Residual deviance:  8506.3  on 74678  degrees of freedom
+AIC: 8520.3
+
+Number of Fisher Scoring iterations: 25
+
+
+Accuracy: 99.8 %
+AUC-ROC : 0.996 
