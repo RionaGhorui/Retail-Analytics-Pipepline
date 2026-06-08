@@ -18,8 +18,8 @@ services:
     mem_limit: 4g
     command: >
       bash -c "
-        airflow db migrate &&
+        airflow db init &&
         airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com &&
         airflow webserver & airflow scheduler
       "
-      
+
