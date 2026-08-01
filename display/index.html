@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Retail Customer Churn & Retention Analysis</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+
+<header>
+
+    <div class="container navbar">
+        <div class="logo">
+            Retail Analytics
+        </div>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#workflow">Workflow</a>
+            <a href="#implementation">Implementation</a>
+            <a href="#insights">Insights</a>
+            <a href="#tech">Tech Stack</a>
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+    <div class="container hero-grid">
+        <div>
+            <span class="tag">
+                Retail Analytics Project
+            </span>
+            <h1>
+                Retail Customer Churn & Retention Analysis
+            </h1>
+
+            <p>
+
+                An end-to-end analytics project that studies customer
+                purchasing behaviour using retail transaction data.
+                The project performs customer-level feature engineering,
+                churn analysis and survival analysis to generate
+                business insights.
+
+            </p>
+
+            <div class="buttons">
+
+                <a href="https://github.com/RionaGhorui/Retail-Analytics-Pipepline.git"
+                    class="btn btn-outline">
+                    View Source
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="summary-card">
+            <h3>
+                Project Goal
+            </h3>
+
+            <p>
+
+                Understand customer purchasing behaviour
+                and visualize customer retention trends
+                from retail transaction data.
+
+            </p>
+
+            <hr>
+
+            <div class="summary-item">
+
+                <strong>Dataset</strong>
+
+                <span>Retail Transactions</span>
+
+            </div>
+
+            <div class="summary-item">
+
+                <strong>Analysis</strong>
+
+                <span>Customer Churn</span>
+
+            </div>
+
+            <div class="summary-item">
+
+                <strong>Method</strong>
+
+                <span>Kaplan-Meier Survival Analysis</span>
+
+            </div>
+
+            <div class="summary-item">
+
+                <strong>Output</strong>
+
+                <span>Business Insights</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="section">
+
+    <div class="container">
+
+        <h2>
+            Why This Project?
+        </h2>
+
+        <p>
+
+            While learning about real-world machine learning systems,
+            I became interested in how businesses use customer data
+            to make decisions rather than focusing only on predictive
+            model accuracy.
+
+            Retail is a domain where customer transaction data can
+            provide valuable insights into purchasing behaviour,
+            customer retention and churn. This project explores how
+            an analytics pipeline can transform raw transaction data
+            into meaningful business insights.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ===================== WORKFLOW ===================== -->
+
+<section id="workflow" class="section light">
+
+    <div class="container">
+
+        <h2>
+
+            Project Workflow
+
+        </h2>
+
+        <p>
+
+            The project follows an end-to-end workflow beginning with
+            retail transaction data and progressing through data
+            cleaning, feature engineering, analytics and visualization.
+
+        </p>
+
+        <div class="workflow-image">
+
+            <img
+                src="assets/workflow_placeholder.png"
+                alt="Workflow Diagram">
+
+        </div>
+
+        <p class="caption">
+            Step-by-step workflow of the retail analytics project.
+        </p>
+
+    </div>
+
+</section>
+
+<!--  IMPLEMENTATION  -->
+
+<section id="implementation" class="section">
+
+    <div class="container">
+
+        <h2></h2>
+            Pipeline Execution
+        </h2>
+
+        <p>
+            The analytics workflow is orchestrated using Apache Airflow
+            and containerized with Docker.
+        </p>
+
+        <div class="gallery">
+
+            <div class="gallery-card">
+
+                <img
+                    src="assets/docker.png"
+                    alt="Docker">
+
+                <h3>
+                    Docker Container
+                </h3>
+
+                <p>
+                    Containerized environment used to
+                    execute the analytics pipeline.
+                </p>
+
+            </div>
+
+            <div class="gallery-card">
+
+                <img
+                    src="assets/airflow_home.png"
+                    alt="Airflow Home">
+
+                <h3>
+
+                    Airflow DAG
+
+                </h3>
+
+                <p>
+
+                    Scheduled execution of the
+                    analytics workflow.
+
+                </p>
+
+            </div>
+
+            <div class="gallery-card">
+
+                <img
+                    src="assets/airflow_graph.png"
+                    alt="Airflow Graph">
+
+                <h3>
+                    Task Dependencies
+                </h3>
+
+                <p>
+                    Sequential execution of each
+                    pipeline stage.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- INSIGHTS  -->
+
+<section id="insights" class="section light">
+
+    <div class="container">
+
+        <h2>
+            Business Insights
+        </h2>
+
+        <div class="gallery">
+            <div class="gallery-card">
+
+                <img
+                    src="assets/retention_curve.png"
+                    alt="Retention">
+                <h3>
+
+                    Customer Retention
+
+                </h3>
+
+                <p>
+
+                    The Kaplan-Meier curve estimates how
+                    customer retention changes over time.
+
+                </p>
+
+            </div>
+
+            <div class="gallery-card">
+
+                <img
+                    src="assets/distribution.png"
+                    alt="Recency">
+
+                <h3>
+
+                    Customer Recency
+
+                </h3>
+
+                <p>
+
+                    Customers with higher recency values
+                    are more likely to have churned.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--  TECH STACK  -->
+
+<section id="tech" class="section">
+
+    <div class="container">
+
+        <h2>
+            Tech Stack
+        </h2>
+
+        <div class="tech-stack">
+
+            <span>Python - Spark job scripting (ETL and feature engineering)</span>
+            <span>R - Churn modeling, survival analysis, output visualizations</span>
+            <span>Delta Lake - ACID-compliant lakehouse storage for Bronze/Silver/Gold tables</span>
+            <span>Apache Spark - Distributed data processing across all three pipeline layers</span>
+            <span>Apache Airflow - Pipeline orchestration</span>
+            <span>Docker - Containerized, reproducible environment for the full stack</span>
+            <span>HTML/CSS - Web development</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--  FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            Retail Customer Churn & Retention Analysis
+        </p>
+
+        <p>
+            Built as a learning project to understand
+            customer analytics using retail transaction data.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+
+</html>
