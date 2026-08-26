@@ -17,9 +17,7 @@ spark.sparkContext.setLogLevel("WARN")
 RAW_PATH    = "/opt/data/raw"
 BRONZE_PATH = "/opt/delta_lake/bronze"
 
-# Each CSV becomes an independent Delta table in the Bronze layer.
-# Nothing is changed, cleaned, or joined — Bronze is a faithful copy
-# of the source. If anything downstream breaks, you reprocess from here.
+# Each csv becomes an independent delta table in the bronze layer. nothing is changed.
 tables = {
     "orders":    "olist_orders_dataset.csv",
     "customers": "olist_customers_dataset.csv",
