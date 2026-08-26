@@ -2,6 +2,7 @@ Retail Customer Churn & Retention Analysis
 ---
 ### Read about the project
 #### 🔗 [Project Landing Page](https://retailanalyticsdashboard.vercel.app/)
+#### Tech Stack:  Python, R, Delta Lake, Apache Spark, Apache Airflow, Docker
 ---
 ### Project Workflow
 (Made by me on LucidCharts)
