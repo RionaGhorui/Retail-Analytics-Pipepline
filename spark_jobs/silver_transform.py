@@ -23,9 +23,8 @@ customers = spark.read.format("delta").load(f"{BRONZE}/customers")
 payments  = spark.read.format("delta").load(f"{BRONZE}/payments")
 reviews   = spark.read.format("delta").load(f"{BRONZE}/reviews")
 
+#1
 # Filter to delivered orders only, parse timestamps, compute delivery duration.
-# We keep customer_unique_id (the actual unique person) alongside customer_id
-# (which is per-order in the Olist schema — one person can have many).
 orders_clean = orders \
     .filter(col("order_status") == "delivered") \
     .dropDuplicates(["order_id"]) \
@@ -38,17 +37,20 @@ orders_clean = orders \
                 )) \
     .select("order_id", "customer_id", "order_purchase_ts", "delivery_days")
 
+#2
 # One payment total per order (multiple payment methods sum together)
 payments_agg = payments \
     .groupBy("order_id") \
     .agg({"payment_value": "sum"}) \
     .withColumnRenamed("sum(payment_value)", "order_value")
 
+#3
 # One review per order (take the first if duplicates exist)
 reviews_clean = reviews \
     .dropDuplicates(["order_id"]) \
     .select("order_id", "review_score")
 
+#4
 # Build a flat master table: one row per order with all dimensions attached
 silver_df = orders_clean \
     .join(
