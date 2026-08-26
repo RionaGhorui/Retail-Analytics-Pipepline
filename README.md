@@ -6,3 +6,5 @@ Retail Customer Churn & Retention Analysis
 ### Project Workflow
 (Made by me on LucidCharts)
 ![workflow](/display/assets/workflow_placeholder.png)
+
+![workflow](/display/assets/Technical_flow.png)
